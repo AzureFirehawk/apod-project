@@ -100,6 +100,11 @@ header h1 {
     text-align: center;
 }
 
+.apod h2 {
+    font-size: 1.5rem;
+    padding: 10px;
+}
+
 .apod-info a,
 .topic-card a {
     color: var(--star-yellow);
@@ -129,6 +134,7 @@ header h1 {
     background-color: var(--space-black);
     padding: 2rem 1rem;
     text-align: center;
+    border-radius: 8px;
 }
 
  h3 {
@@ -220,6 +226,84 @@ footer {
     color: var(--star-yellow);
     font-weight: bold;
 }
+
+.calendar-date.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    background-color: #333;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.calendar-dropdowns select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: var(--font-heading);
+    background-color: var(--nebula-blue);
+    color: var(--planet-white);
+    border: none; }
+
+/* Calendar animations */
+
+@keyframes fadeInCascade {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calendar-date {
+    opacity: 0;
+    /* Start hidden */
+    animation-name: fadeInCascade;
+    animation-fill-mode: forwards;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+    animation-delay: var(--delay, 0s); 
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.month-label {
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out; 
+    cursor: pointer;
+}
+
+.slide-left {
+    animation-name: slideInLeft;
+}
+
+.slide-right {
+    animation-name: slideInRight; }
 
 /* Large Screen Layout */
 @media (min-width: 760px) {
