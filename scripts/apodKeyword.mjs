@@ -15,6 +15,7 @@ export async function fetchApod(date) {
 
         const res = await fetch(url);
         if (!res.ok) throw new Error(`APOD API error: ${res.status} ${res.statusText}`);
+        console.log('APOD API response:', res);
         return await res.json();
     } catch (error) {
         console.error('Error fetching APOD:', error);
@@ -55,7 +56,7 @@ const astronomyTerms = new Set([
     'atmosphere', 'vacuum', 'solar', 'heliosphere', 'interstellar', 'intergalactic', 'space', 'cosmic', 'skyscape', 'star map',
     'apollo', 'hubble', 'cassini', 'voyager', 'spitzer', 'james webb', 'iss', 'international space station',
     'constellation', 'zenith', 'horizon', 'equinox', 'solstice', 'parallax', 'redshift', 'blueshift', 'spectra', 'celestial',
-    'phenomena', 'apparent', 'magnitude', 'luminosity', 'exoplanet', 'cosmology', 'astrophysics', 'astrobiology', 'startrails', 'polaris',
+    'phenomena', 'apparent', 'magnitude', 'luminosity', 'exoplanet', 'cosmology', 'astrophysics', 'astrobiology', 'startrails', 'polaris', 'airglow',
 ]);
 
 const astronomyPhrases = [
