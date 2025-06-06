@@ -27,7 +27,7 @@ export function renderCalendar(month, year) {
         monthLabel.className = "month-label month-picker-trigger";
     }
 
-    // Update text and animate
+    // Update text
     monthLabel.textContent = `${new Date(year, month).toLocaleString("default", { month: "long" })} ${year}`;
 
     const picker = createMonthYearPicker();
