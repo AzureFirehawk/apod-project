@@ -172,6 +172,17 @@ footer {
     font-size: 0.9rem;
 }
 
+/* History page */
+
+#calendar {
+    max-width: 350px;
+    margin: 2rem auto;
+    background-color: var(--space-black);
+    color: var(--planet-white);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+}
+
 /* Large Screen Layout */
 @media (min-width: 760px) {
     main {
