@@ -128,6 +128,10 @@ header h1 {
     background-color: #e6b800;
 }
 
+button {
+    cursor: pointer;
+}
+
 /* Related Topics */
 
 .related-topics {
@@ -235,14 +239,65 @@ footer {
     cursor: not-allowed;
 }
 
-.calendar-dropdowns select {
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-family: var(--font-heading);
-    background-color: var(--nebula-blue);
+.label-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.month-label {
+    cursor: pointer;
+    animation: fadeIn 0.3s
+}
+
+.month-year-picker {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    background-color: var(--space-black);
+    border: 1px solid var(--nebula-blue);
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 10;
+    display: none;
+    /* Hidden by default */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    max-width: 240px;
     color: var(--planet-white);
-    border: none; }
+}
+
+.month-year-picker.active {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    /* for months */
+}
+
+.month-year-picker button {
+    background: none;
+    border: none;
+    color: var(--planet-white);
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.month-year-picker button:hover {
+    background-color: var(--nebula-blue);
+    border-radius: 4px; 
+}
+
+.year-nav {
+    display: flex;
+    justify-content: space-between;
+    grid-column: span 3;
+}
+
+.disabled-month {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: not-allowed;
+}
 
 /* Calendar animations */
 
@@ -257,6 +312,16 @@ footer {
     }
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .calendar-date {
     opacity: 0;
     /* Start hidden */
@@ -267,43 +332,6 @@ footer {
     animation-delay: var(--delay, 0s); 
 }
 
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.month-label {
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: ease-out; 
-    cursor: pointer;
-}
-
-.slide-left {
-    animation-name: slideInLeft;
-}
-
-.slide-right {
-    animation-name: slideInRight; }
 
 /* Large Screen Layout */
 @media (min-width: 760px) {
