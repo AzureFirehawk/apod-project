@@ -131,7 +131,7 @@ header h1 {
     text-align: center;
 }
 
-.related-topics h3 {
+ h3 {
     color: var(--star-yellow);
     font-family: var(--font-heading);
     font-size: 1.5rem;
@@ -172,15 +172,53 @@ footer {
     font-size: 0.9rem;
 }
 
-/* History page */
+/* Calendar Styling */
+.calendar-search {
+    background-color: var(--space-black);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 600px;
+    text-align: center;
+}
 
 #calendar {
-    max-width: 350px;
-    margin: 2rem auto;
-    background-color: var(--space-black);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--star-yellow);
+    font-family: var(--font-heading);
+}
+
+.calendar-day,
+.calendar-date {
+    padding: 0.75rem;
+    background-color: var(--nebula-blue);
+    border-radius: 4px;
     color: var(--planet-white);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+    font-size: 0.9rem;
+}
+
+.calendar-date:hover {
+    cursor: pointer;
+    background-color: var(--star-yellow);
+    color: var(--space-black);
+    font-weight: bold;
+}
+
+.calendar-date.today {
+    border: 2px solid var(--star-yellow);
+    background-color: var(--space-black);
+    color: var(--star-yellow);
+    font-weight: bold;
 }
 
 /* Large Screen Layout */

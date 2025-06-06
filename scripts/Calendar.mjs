@@ -2,6 +2,11 @@ const calendar = document.getElementById("calendar");
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export function renderCalendar(month, year) {
+    const existingHeader = document.querySelector(".calendar-header");
+    if (existingHeader) {
+        existingHeader.remove();
+    }
+
     calendar.innerHTML = "";
 
     const header = document.createElement("div");
@@ -13,6 +18,7 @@ export function renderCalendar(month, year) {
     `;
     calendar.before(header);
 
+    // Create weekday labels
     daysOfWeek.forEach(day => {
         const dayEl = document.createElement("div");
         dayEl.className = "calendar-day";
@@ -28,6 +34,8 @@ export function renderCalendar(month, year) {
         calendar.appendChild(empty);
     }
 
+    // Create date elements
+    const today = new Date(); 
     for (let day = 1; day <= daysInMonth; day++) {
         const dateEl = document.createElement("div");
         dateEl.className = "calendar-date";
@@ -35,8 +43,17 @@ export function renderCalendar(month, year) {
 
         const dateStr = `${year}-${(month + 1).toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
         dateEl.addEventListener("click", () => {
-            window.location.href = `result.html?date=${dateStr}`;
+            window.location.href = `apod-result.html?date=${dateStr}`;
         });
+
+        // Highlight current date
+        if (
+            day === today.getDate() &&
+            month === today.getMonth() &&
+            year === today.getFullYear()
+        ) {
+            dateEl.classList.add("today");
+        }
 
         calendar.appendChild(dateEl);
     }
