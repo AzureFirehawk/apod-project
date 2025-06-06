@@ -6,4 +6,4 @@ loadHeaderFooter();
 showApodInfo(); 
 
 const today = new Date();
-renderCalendar(today.getMonth(), today.getFullYear());
+renderCalendar(today.getMonth(), today.getFullYear(), "none");
