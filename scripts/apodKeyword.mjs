@@ -1,8 +1,19 @@
 // apodKeyword.mjs
-import astronomyData from '../data/astronomyKeywords.json' assert { type: 'json' };
 
-const astronomyTerms = new Set(astronomyData.terms);
-const astronomyPhrases = astronomyData.phrases;
+let astronomyTerms = new Set();
+let astronomyPhrases = [];
+
+// ✅ Load from JSON dynamically
+async function loadAstronomyKeywords() {
+    try {
+        const res = await fetch('./data/astronomyKeywords.json');
+        const json = await res.json();
+        astronomyTerms = new Set(json.terms.map(term => term.toLowerCase()));
+        astronomyPhrases = json.phrases.map(p => p.toLowerCase());
+    } catch (err) {
+        console.error("Failed to load astronomy keywords:", err);
+    }
+}
 const NASA_API_KEY = 'W83Z1iSs1HJ7Al5lifeGgTaON1wZVCHiOJ49GyU6';
 const APOD_URL = 'https://api.nasa.gov/planetary/apod';
 const IMAGE_LIBRARY_URL = 'https://images-api.nasa.gov/search';
@@ -61,7 +72,7 @@ function extractPhrasesFromText(text, phraseList) {
 // Match single astronomy terms
 function extractRelevantKeywords(text) {
     if (!text) return [];
-
+    
     const stopwords = new Set([
         'which', 'their', 'there', 'about', 'would', 'these', 'could',
         'other', 'some', 'also', 'after', 'before', 'where', 'when',
@@ -82,7 +93,8 @@ function extractRelevantKeywords(text) {
 //Fetch APOD + match keywords and phrases
 export async function fetchApodWithKeywords(date) {
     const apodData = await fetchApod(date);
-
+    
+    await loadAstronomyKeywords();
     const phraseKeywords = extractPhrasesFromText(apodData.explanation, astronomyPhrases);
     const termKeywords = extractRelevantKeywords(apodData.explanation);
 
@@ -95,5 +107,6 @@ export async function fetchApodWithKeywords(date) {
         ...imageKeywords
     ])];
 
+    console.log('Combined keywords:', combinedKeywords);
     return { apodData, keywords: combinedKeywords };
 }
