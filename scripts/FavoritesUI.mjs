@@ -1,4 +1,4 @@
-import { isFavorite, addFavorite, removeFavorite } from "./Favorites.mjs";
+import { isFavorite, addFavorite, removeFavorite } from "./FavoritesList.mjs";
 
 function handleAddFavorite(apodData) {
     const result = addFavorite(apodData);
