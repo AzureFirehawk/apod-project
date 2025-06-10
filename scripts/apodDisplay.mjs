@@ -1,6 +1,7 @@
 import { fetchApodWithKeywords } from "./apodKeyword.mjs";
 import { fetchWikipediaInfo } from "./WikiFetch.mjs";
 import { toTitleCase } from "./utils.mjs";
+import { updateFavoriteButton } from "./FavoritesUI.mjs";
 
 
 //Create and insert related topic cards using Wikipedia data
@@ -45,6 +46,9 @@ export async function showApodInfo(date) {
         document.getElementById("apod-explanation").textContent = apodData.explanation;
         document.getElementById("apod-image").src = apodData.url;
         document.getElementById("apod-image").alt = apodData.title;
+
+        // Update favorite button
+        updateFavoriteButton(apodData);
 
         // Show related topic cards
         await showRelatedTopics(keywords);
