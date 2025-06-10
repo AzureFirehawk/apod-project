@@ -12,6 +12,13 @@ function getDateFromQuery() {
 const date = getDateFromQuery();
 showApodInfo(date);
 
+document.querySelector("title").innerHTML = "StellarScope | APOD "
+    + new Date(date).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+    });
+
 document.querySelector("h2").innerHTML = "Astronomy Picture of the Day | "
     + new Date(date).toLocaleDateString("en-US", {
     month: "short",
