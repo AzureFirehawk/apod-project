@@ -19,7 +19,5 @@ function getDateFromQuery() {
 const date = getDateFromQuery();
 showApodInfo(date);
 
-
-
 const today = new Date();
 renderCalendar(today.getMonth(), today.getFullYear());
