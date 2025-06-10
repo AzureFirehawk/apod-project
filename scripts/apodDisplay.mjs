@@ -3,10 +3,7 @@ import { fetchWikipediaInfo } from "./WikiFetch.mjs";
 import { toTitleCase } from "./utils.mjs";
 
 
-/**
- * Create and insert related topic cards using Wikipedia data
- * @param {Array<string>} keywords
- */
+//Create and insert related topic cards using Wikipedia data
 export async function showRelatedTopics(keywords) {
     const container = document.querySelector(".related-topics .cards-container");
     container.innerHTML = ""; // Clear old content
@@ -37,9 +34,8 @@ export async function showRelatedTopics(keywords) {
     }   
 }
 
-/**
- * Show the APOD content and related topic cards
- */
+//Show the APOD content and related topic cards
+
 export async function showApodInfo(date) {
     try {
         const { apodData, keywords } = await fetchApodWithKeywords(date);
