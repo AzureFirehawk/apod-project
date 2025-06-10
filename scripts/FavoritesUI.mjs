@@ -21,7 +21,7 @@ function handleRemoveFavorite(apodData) {
 }
 
 export function updateFavoriteButton(apodData) {
-    const button = document.getElementById("favorite-button");
+    const button = document.getElementById("saveFavorite");
     if (!button) return;
 
     if (isFavorite(apodData.date)) {
