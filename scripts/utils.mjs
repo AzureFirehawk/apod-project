@@ -108,3 +108,18 @@ export function toTitleCase(str) {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
+
+export function showToast(message) {
+  const container = document.getElementById("toast-container");
+
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = message;
+
+  container.appendChild(toast);
+
+  // Remove after animation ends (e.g., 3s total)
+  setTimeout(() => {
+    toast.remove();
+  }, 2000);
+}
