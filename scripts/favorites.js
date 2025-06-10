@@ -1,21 +1,27 @@
 import { loadHeaderFooter } from "./utils.mjs";
-import { getFavorites } from "./FavoritesStorage.mjs";
+import { getFavorites, removeFavorite } from "./FavoritesStorage.mjs";
+import FavoriteCard from "./FavoriteCard.mjs";
 
 loadHeaderFooter();
 
-function favoriteCardTemplate(favorite) {
-    const { date, title, url } = favorite;
-    const formatDate = new Date(date).toLocaleDateString("en-US", {
-        month: "short", day: "numeric", year: "numeric"
-    })
-    return `
-        <div class="favorite-card">
-            <a href="result.html?date=${date}">
-                <img src="${url}" alt="${title}">
-                <h3>${title}</h3>
-                <p>${formatDate}</p>
-            </a>
-            <button class="remove-favorite" data-date="${date}">Remove</button>
-        </div>
-    `;
+const container = document.getElementById("cards-container");
+
+function renderFavorites() {
+    container.innerHTML = ""; // Clear old content
+
+    const favorites = getFavorites();
+
+    if (favorites.length === 0) {
+        container.innerHTML = "<p>No favorites yet.</p>";
+        return;
+    }
+    favorites.forEach((favorite) => {
+        const card = new FavoriteCard(favorite, (favToRemove) => {
+            removeFavorite(favToRemove.date);
+            renderFavorites();
+        });
+        container.appendChild(card.getElement());
+    });
 }
+
+renderFavorites();
