@@ -2,8 +2,14 @@ import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 const STORAGE_KEY = "apod-favorites";
 
-export function getFavorites() {
-    return getLocalStorage(STORAGE_KEY) || [];
+export function getFavorites(sortOrder = 'desc') {
+    const favorites = getLocalStorage(STORAGE_KEY) || [];
+    favorites.sort((a, b) => {
+        return sortOrder === 'asc'
+            ? new Date(a.date) - new Date(b.date)
+            : new Date(b.date) - new Date(a.date);
+    });
+    return favorites;
 }
 
 export function isFavorite(date) {
@@ -15,7 +21,7 @@ export function addFavorite(apodData) {
     const favorites = getLocalStorage(STORAGE_KEY) || [];
 
     // Error checking, if APOD is already in favorites
-    const exists = favorites.find(favorite => favorite.date === apodData.date); // Check if the APOD already exists in favorites
+    const exists = favorites.find(favorite => favorite.date === apodData.date);
     if (exists) {
         return { success: false, message: "Already in favorites!" };
     }
