@@ -87,6 +87,7 @@ nav a {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    align-items: center;
 }
 
 #apod-title,
@@ -106,14 +107,15 @@ header h1 {
 }
 
 .apod-info a,
-.topic-card a {
+.topic-card a
+{
     color: var(--star-yellow);
     text-decoration: underline;
 }
 
 /* Buttons */
 
-.button-link {
+.button-link{
     display: inline-block;
     padding: 0.5rem 1rem;
     background-color: var(--star-yellow);
