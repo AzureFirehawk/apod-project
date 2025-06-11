@@ -393,7 +393,7 @@ footer {
 
 .favorite-card img {
     width: 100%;
-    height: 220px;
+    height: 260px;
     border-radius: 8px;
     object-fit: cover;
 }
@@ -516,7 +516,7 @@ footer {
 
     #cards-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
         gap: 1rem;
     }
 
