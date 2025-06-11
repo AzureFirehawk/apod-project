@@ -25,10 +25,12 @@ export function updateFavoriteButton(apodData) {
     if (!button) return;
 
     if (isFavorite(apodData.date)) {
-        button.textContent = "Remove from Favorites";
+        button.textContent = "★ Remove Favorite";
+        button.classList.add("saved");
         button.onclick = () => handleRemoveFavorite(apodData);
     } else {
-        button.textContent = "Add to Favorites";
+        button.textContent = "☆ Add to Favorites";
+        button.classList.remove("saved");
         button.onclick = () => handleAddFavorite(apodData);
     }
 }
