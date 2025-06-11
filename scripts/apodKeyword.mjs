@@ -95,6 +95,8 @@ export async function fetchApodWithKeywords(date) {
     const apodData = await fetchApod(date);
     
     await loadAstronomyKeywords();
+
+    const titleKeywords = extractRelevantKeywords(apodData.title);
     const phraseKeywords = extractPhrasesFromText(apodData.explanation, astronomyPhrases);
     const termKeywords = extractRelevantKeywords(apodData.explanation);
 
@@ -102,6 +104,7 @@ export async function fetchApodWithKeywords(date) {
     const imageKeywords = (imageLibraryItems[0]?.data[0]?.keywords || []).map(k => k.toLowerCase());
 
     const combinedKeywords = [...new Set([
+        ...titleKeywords,
         ...phraseKeywords,
         ...termKeywords,
         ...imageKeywords
