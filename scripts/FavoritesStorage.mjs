@@ -1,4 +1,5 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { fetchWikipediaInfo } from "./WikiFetch.mjs";
 
 const STORAGE_KEY = "apod-favorites";
 
@@ -17,13 +18,34 @@ export function isFavorite(date) {
     return favorites.some(favorite => favorite.date === date);
 }
 
-export function addFavorite(apodData) {
+export async function addFavorite(apodData, titleKeyword) {
     const favorites = getLocalStorage(STORAGE_KEY) || [];
 
     // Error checking, if APOD is already in favorites
     const exists = favorites.find(favorite => favorite.date === apodData.date);
     if (exists) {
         return { success: false, message: "Already in favorites!" };
+    }
+
+    // Add only relevant data to local storage
+    const data = {
+        title: apodData.title,
+        date: apodData.date,
+        media_type: apodData.media_type,
+        url: apodData.url || apodData.hdurl
+    }
+
+    // Add Wikipedia info for card back
+    if (titleKeyword) {
+        const wikiInfo = await fetchWikipediaInfo(titleKeyword);
+        if (wikiInfo) {
+            data.relatedTopic = {
+                keyword: titleKeyword,
+                wikiTitle: wikiInfo.title,
+                wikiSummary: wikiInfo.summary,
+                wikiUrl: wikiInfo.url
+            }
+        }
     }
 
     favorites.push(apodData);
