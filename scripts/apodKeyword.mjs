@@ -111,5 +111,9 @@ export async function fetchApodWithKeywords(date) {
     ])];
 
     console.log('Combined keywords:', combinedKeywords);
-    return { apodData, keywords: combinedKeywords };
+    return {
+        apodData,
+        firstTitleKeywords : titleKeywords[0] || null,
+        keywords: combinedKeywords
+    };
 }
