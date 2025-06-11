@@ -9,21 +9,29 @@ function getDateFromQuery() {
     return params.get('date') || undefined;
 }
 
-const date = getDateFromQuery();
-showApodInfo(date);
+const dateStr = getDateFromQuery();
+const date = dateStr ? parseDateAsLocal(dateStr) : new Date();
 
-document.querySelector("title").innerHTML = "StellarScope | APOD "
-    + new Date(date).toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-    });
+showApodInfo(dateStr); // keep passing original string if your API expects it
 
-document.querySelector("h2").innerHTML = "Astronomy Picture of the Day | "
-    + new Date(date).toLocaleDateString("en-US", {
+document.querySelector("title").innerHTML = "StellarScope | APOD " 
+  + date.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric"
-});
+  });
+
+document.querySelector("h2").innerHTML = "Astronomy Picture of the Day | " 
+  + date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric"
+  });
+
 const today = new Date();
 renderCalendar(today.getMonth(), today.getFullYear());
+
+function parseDateAsLocal(dateStr) {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  return new Date(year, month - 1, day);
+}
