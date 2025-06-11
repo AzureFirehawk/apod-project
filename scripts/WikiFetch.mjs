@@ -1,4 +1,9 @@
-export async function fetchWikipediaInfo(term) {
+export async function fetchWikipediaInfo(term, depth = 0) {
+    if (depth > 5) { //Disambiguation limit
+        console.warn(`Disambiguation depth limit reached for: ${term}`);
+        return null;
+    }
+
     const endpoint = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`;
     try {
         const res = await fetch(endpoint);
@@ -35,30 +40,16 @@ async function tryResolveDisambiguation(term) {
         const searchData = await res.json();
         const pages = searchData.pages || [];
 
-        for (const page of pages) {
-            const title = page.title;
+        // Priority match
+        const priorityTerms = ["rover", "mission", "telescope", "spacecraft", "probe", "observatory"];
+        const prioritized = pages.find(page =>
+            priorityTerms.some(pt => page.title.toLowerCase().includes(pt))
+        );
+        if (prioritized) return await fetchWikipediaInfo(prioritized.title, depth);
 
-            //Prioritize articles with keywords like "rover", "mission", "telescope", etc.
-            const lower = title.toLowerCase();
-            if (
-                lower.includes("rover") ||
-                lower.includes("telescope") ||
-                lower.includes("spacecraft") ||
-                lower.includes("mission") ||
-                lower.includes("probe") ||
-                lower.includes("observatory")
-            ) {
-                // Fetch that specific page’s summary
-                return await fetchWikipediaInfo(title);
-            }
-        }
-
-        //No ideal match found, return the first non-disambiguation page
-        for (const page of pages) {
-            if (!page.title.toLowerCase().includes("(disambiguation)")) {
-                return await fetchWikipediaInfo(page.title);
-            }
-        }
+        // Fallback to first non-disambiguation
+        const fallback = pages.find(page => !page.title.toLowerCase().includes("disambiguation"));
+        if (fallback) return await fetchWikipediaInfo(fallback.title, depth);
     } catch (err) {
         console.warn(`Disambiguation fallback failed for "${term}":`, err.message);
     }
