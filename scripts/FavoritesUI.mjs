@@ -1,10 +1,10 @@
 import { isFavorite, addFavorite, removeFavorite } from "./FavoritesStorage.mjs";
 
-function handleAddFavorite(apodData) {
-    const result = addFavorite(apodData);
+async function handleAddFavorite(apodData, titleKeyword) {
+    const result = await addFavorite(apodData, titleKeyword);
     if (result.success) {
-        updateFavoriteButton(apodData);
-        // Optional: show success message
+        updateFavoriteButton(apodData, titleKeyword);
+
     } else {
         alert(result.message);
     }
@@ -20,7 +20,7 @@ function handleRemoveFavorite(apodData) {
     }
 }
 
-export function updateFavoriteButton(apodData) {
+export function updateFavoriteButton(apodData, titleKeyword) {
     const button = document.getElementById("save-favorite");
     if (!button) return;
 
@@ -31,6 +31,6 @@ export function updateFavoriteButton(apodData) {
     } else {
         button.textContent = "☆ Add to Favorites";
         button.classList.remove("saved");
-        button.onclick = () => handleAddFavorite(apodData);
+        button.onclick = () => handleAddFavorite(apodData, titleKeyword);
     }
 }
