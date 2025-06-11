@@ -48,9 +48,11 @@ export async function addFavorite(apodData, titleKeyword) {
         }
     }
 
-    favorites.push(apodData);
+    favorites.push(data);
     setLocalStorage(STORAGE_KEY, favorites);
+    console.log("Saving favorite:", data);
     return { success: true, message: "Added to favorites!" };
+
 }
 
 export function removeFavorite(date) {
