@@ -116,4 +116,5 @@ export async function fetchApodWithKeywords(date) {
         firstTitleKeywords : titleKeywords[0] || null,
         keywords: combinedKeywords
     };
+
 }
