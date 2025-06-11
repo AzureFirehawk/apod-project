@@ -2,7 +2,6 @@
     "terms": [
         "mercury",
         "venus",
-        "earth",
         "mars",
         "jupiter",
         "saturn",
@@ -193,6 +192,7 @@
         "exoplanet"
     ],
     "phrases": [
+        "space exploration",
         "black hole",
         "white dwarf",
         "neutron star",
@@ -237,6 +237,7 @@
         "perseverance rover",
         "curiosity rover",
         "opportunity rover",
-        "spirit rover"
+        "spirit rover",
+        "orion nebula"
     ]
 }
