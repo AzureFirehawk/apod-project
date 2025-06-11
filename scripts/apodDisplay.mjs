@@ -39,7 +39,7 @@ export async function showRelatedTopics(keywords) {
 
 export async function showApodInfo(date) {
     try {
-        const { apodData, keywords } = await fetchApodWithKeywords(date);
+        const { apodData, keywords, firstTitleKeywords } = await fetchApodWithKeywords(date);
         console.log(apodData);
         // Populate APOD section
         document.getElementById("apod-title").textContent = apodData.title;
@@ -48,7 +48,7 @@ export async function showApodInfo(date) {
         document.getElementById("apod-image").alt = apodData.title;
 
         // Update favorite button
-        updateFavoriteButton(apodData);
+        updateFavoriteButton(apodData, firstTitleKeywords);
 
         // Show related topic cards
         await showRelatedTopics(keywords);
