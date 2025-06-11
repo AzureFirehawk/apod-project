@@ -24,12 +24,12 @@ function favoriteCardTemplate(favorite) {
                     </div>
                 </div>
                 ${relatedTopic ? `
-                    <div class="card-back">
-                        <h4>${relatedTopic.wikiTitle}</h4>
-                        <p>${relatedTopic.wikiSummary}</p>
-                        <a href="${relatedTopic.wikiUrl}" target="_blank">Read more on Wikipedia</a>
-                        <button class="back-button">Back</button>
-                    </div>
+                <div class="card-back">
+                    <h4>${relatedTopic.wikiTitle}</h4>
+                    <p>${relatedTopic.wikiSummary}</p>
+                    <a href="${relatedTopic.wikiUrl}" target="_blank">Read more on Wikipedia</a>
+                    <button class="back-button">Back</button>
+                </div>
                 ` : ""}                
             </div>
         </div>`;
@@ -51,11 +51,12 @@ export default class FavoriteCard {
 
         const removeButton = container.querySelector(".remove-favorite");
         removeButton.addEventListener("click", () => {
-            container.classList.add("fade-out");
+            card.classList.add("fade-out");
             setTimeout(() => this.onRemove(this.favorite), 300);
             showToast("Removed from favorites");
         });
 
+        // If related topic is saved, add event listeners to flip card
         const moreButton = container.querySelector(".more-info");
         const backButton = container.querySelector(".back-button");
 
