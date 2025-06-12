@@ -20,10 +20,10 @@ export async function loadTopics(containerId = "topic-list") {
             const desc = document.createElement("p");
             desc.textContent = topic.description;
             
-            card.appendChild(name);
-            card.appendChild(desc);
-            link.appendChild(card);
-            container.appendChild(link);
+            link.appendChild(name);
+            link.appendChild(desc);
+            card.appendChild(link);
+            container.appendChild(card);
         });
     } catch (err) {
         console.error("Failed to load topics:", error)
