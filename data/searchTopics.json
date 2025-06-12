@@ -1,0 +1,116 @@
+[
+    {
+        "label": "Planets",
+        "keywords": [
+            "mercury",
+            "venus",
+            "mars",
+            "jupiter",
+            "saturn",
+            "uranus",
+            "neptune",
+            "pluto"
+        ],
+        "description": "Explore the planets of our solar system, from rocky worlds to gas giants."
+    },
+    {
+        "label": "Moons",
+        "keywords": [
+            "moon",
+            "io",
+            "europa",
+            "ganymede",
+            "callisto",
+            "titan",
+            "charon"
+        ],
+        "description": "Discover the natural satellites that orbit planets across our solar system."
+    },
+    {
+        "label": "Galaxies",
+        "keywords": [
+            "galaxy",
+            "andromeda",
+            "milky way",
+            "spiral galaxy",
+            "elliptical galaxy"
+        ],
+        "description": "Vast collections of stars, dust, and dark matter scattered across the cosmos."
+    },
+    {
+        "label": "Nebulae",
+        "keywords": [
+            "nebula",
+            "planetary nebula",
+            "orion nebula"
+        ],
+        "description": "Clouds of gas and dust that birth stars or mark the end of stellar life."
+    },
+    {
+        "label": "Telescopes",
+        "keywords": [
+            "hubble",
+            "james webb",
+            "jwst",
+            "spitzer",
+            "telescope",
+            "observatory"
+        ],
+        "description": "Tools that help us observe the universe in incredible detail from Earth and space."
+    },
+    {
+        "label": "Rovers & Probes",
+        "keywords": [
+            "curiosity",
+            "perseverance",
+            "spirit",
+            "opportunity",
+            "osiris-rex",
+            "new horizons"
+        ]
+    },
+    {
+        "label": "Eclipses & Events",
+        "keywords": [
+            "eclipse",
+            "transit",
+            "solstice",
+            "equinox",
+            "aurora",
+            "meteor shower"
+        ]
+    },
+    {
+        "label": "Stars & Phenomena",
+        "keywords": [
+            "star",
+            "supernova",
+            "black hole",
+            "pulsar",
+            "quasar",
+            "neutron star"
+        ]
+    },
+    {
+        "label": "Space Missions",
+        "keywords": [
+            "apollo",
+            "artemis",
+            "voyager",
+            "cassini",
+            "tess",
+            "kepler",
+            "mro"
+        ]
+    },
+    {
+        "label": "Cosmology",
+        "keywords": [
+            "universe",
+            "dark matter",
+            "dark energy",
+            "cosmic microwave background",
+            "big bang"
+        ]
+    }
+]
