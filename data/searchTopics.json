@@ -1,6 +1,40 @@
 [
     {
+        "label": "Galaxies",
+        "description": "Vast star systems like the Milky Way and Andromeda featured in stunning cosmic views.",
+        "keywords": [
+            "galaxy",
+            "milky way",
+            "andromeda",
+            "spiral galaxy",
+            "elliptical galaxy"
+        ]
+    },
+    {
+        "label": "Nebulae",
+        "description": "Colorful clouds of gas and dust where stars are born and die.",
+        "keywords": [
+            "nebula",
+            "nebulae",
+            "planetary nebula",
+            "orion nebula"
+        ]
+    },
+    {
+        "label": "Stars",
+        "description": "From distant suns to supernova explosions and variable stars.",
+        "keywords": [
+            "star",
+            "supernova",
+            "nova",
+            "pulsar",
+            "quasar",
+            "variable star"
+        ]
+    },
+    {
         "label": "Planets",
+        "description": "Discover Earth’s neighbors, from rocky Mercury to distant Neptune.",
         "keywords": [
             "mercury",
             "venus",
@@ -10,107 +44,119 @@
             "uranus",
             "neptune",
             "pluto"
-        ],
-        "description": "Explore the planets of our solar system, from rocky worlds to gas giants."
+        ]
     },
     {
         "label": "Moons",
+        "description": "Explore the diverse moons orbiting planets across the solar system.",
         "keywords": [
             "moon",
+            "lunar",
             "io",
             "europa",
-            "ganymede",
-            "callisto",
             "titan",
-            "charon"
-        ],
-        "description": "Discover the natural satellites that orbit planets across our solar system."
+            "callisto",
+            "charon",
+            "ganymede"
+        ]
     },
     {
-        "label": "Galaxies",
+        "label": "Asteroids & Comets",
+        "description": "Small bodies like comets, asteroids, and meteoroids that fill our solar system.",
         "keywords": [
-            "galaxy",
-            "andromeda",
-            "milky way",
-            "spiral galaxy",
-            "elliptical galaxy"
-        ],
-        "description": "Vast collections of stars, dust, and dark matter scattered across the cosmos."
+            "asteroid",
+            "comet",
+            "meteor",
+            "meteorite",
+            "meteoroid",
+            "comet tail"
+        ]
     },
     {
-        "label": "Nebulae",
+        "label": "Telescopes & Missions",
+        "description": "Space-based and Earth-based instruments that capture the universe in detail.",
         "keywords": [
-            "nebula",
-            "planetary nebula",
-            "orion nebula"
-        ],
-        "description": "Clouds of gas and dust that birth stars or mark the end of stellar life."
-    },
-    {
-        "label": "Telescopes",
-        "keywords": [
+            "telescope",
+            "observatory",
             "hubble",
-            "james webb",
             "jwst",
             "spitzer",
-            "telescope",
-            "observatory"
-        ],
-        "description": "Tools that help us observe the universe in incredible detail from Earth and space."
-    },
-    {
-        "label": "Rovers & Probes",
-        "keywords": [
-            "curiosity",
-            "perseverance",
-            "spirit",
-            "opportunity",
-            "osiris-rex",
-            "new horizons"
+            "chandra",
+            "wise"
         ]
     },
     {
-        "label": "Eclipses & Events",
+        "label": "Astronomy Concepts",
+        "description": "Fundamental physics and cosmic phenomena that shape the universe.",
         "keywords": [
-            "eclipse",
-            "transit",
-            "solstice",
-            "equinox",
-            "aurora",
-            "meteor shower"
+            "gravity",
+            "magnetic field",
+            "redshift",
+            "blueshift",
+            "light year",
+            "radiation"
         ]
     },
     {
-        "label": "Stars & Phenomena",
-        "keywords": [
-            "star",
-            "supernova",
-            "black hole",
-            "pulsar",
-            "quasar",
-            "neutron star"
-        ]
-    },
-    {
-        "label": "Space Missions",
+        "label": "NASA Missions",
+        "description": "Historic and modern missions like Apollo, Artemis, and Perseverance.",
         "keywords": [
             "apollo",
             "artemis",
+            "perseverance",
+            "curiosity",
             "voyager",
-            "cassini",
-            "tess",
-            "kepler",
-            "mro"
+            "osiris-rex"
         ]
     },
     {
-        "label": "Cosmology",
+        "label": "Rockets & Spacecraft",
+        "description": "The vehicles that carry us and our instruments into orbit and beyond.",
         "keywords": [
-            "universe",
-            "dark matter",
-            "dark energy",
-            "cosmic microwave background",
-            "big bang"
+            "rocket",
+            "satellite",
+            "capsule",
+            "spacecraft",
+            "lander",
+            "probe"
+        ]
+    },
+    {
+        "label": "International Space Station",
+        "description": "Humanity’s orbital home for science, observation, and international cooperation.",
+        "keywords": [
+            "iss",
+            "international space station"
+        ]
+    },
+    {
+        "label": "Auroras & Airglow",
+        "description": "Beautiful atmospheric light displays near Earth’s poles.",
+        "keywords": [
+            "aurora",
+            "airglow",
+            "aurora borealis"
+        ]
+    },
+    {
+        "label": "Eclipses & Transits",
+        "description": "When the Sun, Moon, or planets align to create visual wonders.",
+        "keywords": [
+            "eclipse",
+            "lunar eclipse",
+            "solar eclipse",
+            "transit"
+        ]
+    },
+    {
+        "label": "Constellations & Skyscapes",
+        "description": "Recognizable star patterns and breathtaking nightscapes.",
+        "keywords": [
+            "constellation",
+            "star map",
+            "skyscape",
+            "horizon",
+            "zenith"
         ]
     }
 ]
