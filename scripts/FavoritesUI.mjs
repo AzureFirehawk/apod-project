@@ -1,9 +1,13 @@
 import { isFavorite, addFavorite, removeFavorite } from "./FavoritesStorage.mjs";
+import { renderCalendar } from "./Calendar.mjs";
+
+const today = new Date();
 
 async function handleAddFavorite(apodData, titleKeyword) {
     const result = await addFavorite(apodData, titleKeyword);
     if (result.success) {
         updateFavoriteButton(apodData, titleKeyword);
+        renderCalendar(today.getMonth(), today.getFullYear());
 
     } else {
         alert(result.message);
@@ -14,7 +18,7 @@ function handleRemoveFavorite(apodData) {
     const result = removeFavorite(apodData.date);
     if (result.success) {
         updateFavoriteButton(apodData);
-        // Optional: show success message
+        renderCalendar(today.getMonth(), today.getFullYear()); 
     } else {
         alert(result.message);
     }

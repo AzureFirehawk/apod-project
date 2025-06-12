@@ -270,6 +270,26 @@ footer {
     cursor: not-allowed;
 }
 
+.calendar-date.favorite {
+    outline: 2px solid #FFD700;
+    position: relative;
+}
+
+.calendar-date.favorite::after {
+    content: "★";
+    position: absolute;
+    top: 0.1rem;
+    right: 0.3rem;
+    font-size: 0.8rem;
+    color: var(--star-yellow);
+    transition: color;
+}
+
+.calendar-date.favorite:hover::after {
+    color: var(--space-black);
+}
+
+
 .label-wrapper {
     position: relative;
     display: inline-block;

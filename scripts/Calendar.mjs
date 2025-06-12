@@ -1,5 +1,9 @@
+import { getFavorites, isFavorite } from "./FavoritesStorage.mjs";
+
+
 const calendar = document.getElementById("calendar");
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
 
 export function renderCalendar(month, year) {
     const apodStart = new Date("1995-06-16");
@@ -70,9 +74,14 @@ export function renderCalendar(month, year) {
             ) {
                 dateEl.classList.add("today");
             }
+
+            if (isFavorite(dateStr)) {
+                dateEl.classList.add("favorite")
+            };
         } else {
             dateEl.classList.add("disabled");
         }
+
 
         calendar.appendChild(dateEl);
     }
