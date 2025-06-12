@@ -3,7 +3,6 @@
 let astronomyTerms = new Set();
 let astronomyPhrases = [];
 
-// ✅ Load from JSON dynamically
 async function loadAstronomyKeywords() {
     try {
         const res = await fetch('./data/astronomyKeywords.json');
@@ -35,7 +34,7 @@ export async function fetchApod(date) {
     }
 }
 
-//Search NASA Image and Video Library API by title (query)
+//Search NASA Image and Video Library API by title
 export async function searchImageLibraryByTitle(title) {
     try {
         const url = new URL(IMAGE_LIBRARY_URL);
