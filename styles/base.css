@@ -72,7 +72,7 @@ nav a {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
 }
 
 .apod-card img,
@@ -144,7 +144,7 @@ button {
     border: 1px solid var(--star-yellow);    
     border-radius: 6px;
     transition: background 0.3s, transform 0.2s ease;
-    box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
 }
 
 #save-favorite:hover {
@@ -193,7 +193,7 @@ button {
     padding: 1rem;
     border-radius: 0.75rem;
     border: 1px solid #2b2b2b;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -202,7 +202,7 @@ button {
 
 .topic-card:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 8px rgba(255, 204, 0, 0.4);}
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);}
 
 /* Footer content */
 
@@ -591,6 +591,39 @@ footer {
     }
 }
 
+/* Topics list */
+
+.topics-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.search-topic-card{
+    background: var(--space-black);
+    border: 2px solid var(--star-yellow);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.topic-link {
+    text-decoration: none;
+    color: var(--star-yellow);
+    display: block;
+}
+
+.topic-link h2 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.topic-link p {
+    margin: 0;
+    font-size: 0.95rem;
+
+}
+
 /* Large Screen Layout */
 @media (min-width: 760px) {
     main {
@@ -634,5 +667,19 @@ footer {
 @media (min-width: 600px) {
     #cards-container {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .topics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .search-topic-card {
+        transition: transform 0.2s ease;
+    }
+
+    .search-topic-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);   
     }
 }
