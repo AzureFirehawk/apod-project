@@ -10,23 +10,61 @@ export function createApodCard(apod, options = {}) {
     card.classList.add("apod-card");
     if (isFlippable) card.classList.add("flippable");
 
-    card.innerHTML = `
-        <div class="card-front">
-            <h3>${apod.title}</h3>
+    const front = document.createElement("div");
+    front.classList.add("card-front");
+    front.innerHTML = `
+        <a href="result.html?date=${apod.date}">
             <img src="${apod.url}" alt="${apod.title}" loading="lazy">
+        </a>
+        <a href="result.html?date=${apod.date}">
+            <h3>${apod.title}</h3>
             <p><strong>Date:</strong> ${apod.date}</p>
-            ${showRemoveButton ? `<button class="remove-btn">Remove</button>` : ''}
-        </div>
-        ${showExplanation ? `
-        <div class="card-back">
-            <p>${apod.explanation}</p>
-        </div>` : ''}
+        </a>
     `;
 
+    // Remove button for favorites
     if (showRemoveButton) {
-        card.querySelector(".remove-btn").addEventListener("click", () => {
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.classList.add("remove-btn");
+        removeBtn.addEventListener("click", () => {
             if (onRemove) onRemove(apod.date);
         });
+        front.appendChild(removeBtn);
+    }
+
+    // "More" button to flip
+    if (isFlippable && showExplanation) {
+        const moreBtn = document.createElement("button");
+        moreBtn.textContent = "More";
+        moreBtn.classList.add("flip-btn");
+        moreBtn.addEventListener("click", () => {
+            card.classList.add("flipped");
+        });
+        front.appendChild(moreBtn);
+    }
+
+    card.appendChild(front);
+
+    // Back content
+    if (showExplanation) {
+        const back = document.createElement("div");
+        back.classList.add("card-back");
+        back.innerHTML = `
+            <p>${apod.explanation}</p>
+        `;
+
+        if (isFlippable) {
+            const backBtn = document.createElement("button");
+            backBtn.textContent = "Back";
+            backBtn.classList.add("flip-back-btn");
+            backBtn.addEventListener("click", () => {
+                card.classList.remove("flipped");
+            });
+            back.appendChild(backBtn);
+        }
+
+        card.appendChild(back);
     }
 
     return card;
