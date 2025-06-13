@@ -54,7 +54,7 @@ export async function searchImageLibraryByTitle(title) {
 }
 
 // Normalize and clean text for matching
-function normalizeText(text) {
+export function normalizeText(text) {
     return text
         .toLowerCase()
         .replace(/[\.,;:"'()\-]/g, '')
