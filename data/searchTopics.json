@@ -34,7 +34,7 @@
     },
     {
         "label": "Planets",
-        "description": "Discover Earth’s neighbors, from rocky Mercury to distant Neptune.",
+        "description": "Discover Earth's neighbors, from rocky Mercury to distant Neptune.",
         "keywords": [
             "mercury",
             "venus",
@@ -123,7 +123,7 @@
     },
     {
         "label": "International Space Station",
-        "description": "Humanity’s orbital home for science, observation, and international cooperation.",
+        "description": "Humanity's orbital home for science, observation, and international cooperation.",
         "keywords": [
             "iss",
             "international space station"
@@ -131,7 +131,7 @@
     },
     {
         "label": "Auroras & Airglow",
-        "description": "Beautiful atmospheric light displays near Earth’s poles.",
+        "description": "Beautiful atmospheric light displays near Earth's poles.",
         "keywords": [
             "aurora",
             "airglow",
