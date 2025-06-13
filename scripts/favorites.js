@@ -22,8 +22,14 @@ function renderFavorites() {
             isFlippable: true,    
             showRemoveButton: true,
             onRemove: () => {
-                removeFavorite(favorite.date);
-                renderFavorites();
+                // Animate before removing
+                card.classList.add("removing");
+
+                // Wait for animation to finish before removing
+                setTimeout(() => {
+                    removeFavorite(favorite.date);
+                    renderFavorites();
+                }, 400); // Match animation duration
             }
         });
         container.appendChild(card);
