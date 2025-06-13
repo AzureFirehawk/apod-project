@@ -1,6 +1,6 @@
 import { loadHeaderFooter } from "./utils.mjs";
 import { getFavorites, removeFavorite } from "./FavoritesStorage.mjs";
-import FavoriteCard from "./FavoriteCard.mjs";
+import { createApodCard } from "./apodCard.mjs";
 
 loadHeaderFooter();
 
@@ -15,12 +15,18 @@ function renderFavorites() {
         container.innerHTML = "<p>No favorites yet.</p>";
         return;
     }
-    favorites.forEach((favorite) => {
-        const card = new FavoriteCard(favorite, (favToRemove) => {
-            removeFavorite(favToRemove.date);
-            renderFavorites();
+
+    favorites.forEach(favorite => {
+        const card = createApodCard(favorite, {
+            showExplanation: true,
+            isFlippable: true,    
+            showRemoveButton: true,
+            onRemove: () => {
+                removeFavorite(favorite.date);
+                renderFavorites();
+            }
         });
-        container.appendChild(card.getElement());
+        container.appendChild(card);
     });
 }
 
