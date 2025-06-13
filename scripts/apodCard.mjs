@@ -22,6 +22,17 @@ export function createApodCard(apod, options = {}) {
         </a>
     `;
 
+    // "More" button to flip
+    if (isFlippable && showExplanation) {
+        const moreBtn = document.createElement("button");
+        moreBtn.textContent = "More";
+        moreBtn.classList.add("flip-btn");
+        moreBtn.addEventListener("click", () => {
+            card.classList.add("flipped");
+        });
+        front.appendChild(moreBtn);
+    }
+    
     // Remove button for favorites
     if (showRemoveButton) {
         const removeBtn = document.createElement("button");
@@ -33,17 +44,6 @@ export function createApodCard(apod, options = {}) {
         front.appendChild(removeBtn);
     }
 
-    // "More" button to flip
-    if (isFlippable && showExplanation) {
-        const moreBtn = document.createElement("button");
-        moreBtn.textContent = "More";
-        moreBtn.classList.add("flip-btn");
-        moreBtn.addEventListener("click", () => {
-            card.classList.add("flipped");
-        });
-        front.appendChild(moreBtn);
-    }
-
     card.appendChild(front);
 
     // Back content
@@ -51,6 +51,7 @@ export function createApodCard(apod, options = {}) {
         const back = document.createElement("div");
         back.classList.add("card-back");
         back.innerHTML = `
+            <h3>${apod.title}</h3>
             <p>${apod.explanation}</p>
         `;
 
