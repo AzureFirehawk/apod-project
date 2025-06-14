@@ -52,8 +52,10 @@ export async function showApodInfo(date) {
 
         // Show related topic cards
         await showRelatedTopics(keywords);
-
+    return apodData
     } catch (err) {
         console.error('Error loading APOD with keywords:', err);
     }
+
+
 }

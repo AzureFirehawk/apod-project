@@ -1,9 +1,14 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, setFooterCopyright } from "./utils.mjs";
 import { showApodInfo } from "./apodDisplay.mjs";
 import { renderCalendar } from "./Calendar.mjs";
 
 loadHeaderFooter();
-showApodInfo(); 
+showApodInfo().then(apodData => {
+    if (apodData) {
+        setFooterCopyright(apodData)
+    }
+}); 
+
 
 const today = new Date();
 renderCalendar(today.getMonth(), today.getFullYear());

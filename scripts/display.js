@@ -1,8 +1,9 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, setFooterCopyright } from "./utils.mjs";
 import { showApodInfo } from "./apodDisplay.mjs";
 import { renderCalendar } from "./Calendar.mjs";
 
 loadHeaderFooter();
+
 
 function getDateFromQuery() {
     const params = new URLSearchParams(window.location.search);
@@ -12,7 +13,11 @@ function getDateFromQuery() {
 const dateStr = getDateFromQuery();
 const date = dateStr ? parseDateAsLocal(dateStr) : new Date();
 
-showApodInfo(dateStr); // keep passing original string if your API expects it
+showApodInfo(dateStr).then(apodData => {
+  if (apodData) {
+    setFooterCopyright(apodData)
+  }
+});; // keep passing original string if your API expects it
 
 document.querySelector("title").innerHTML = "StellarScope | APOD " 
   + date.toLocaleDateString("en-US", {

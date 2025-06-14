@@ -109,17 +109,11 @@ export function toTitleCase(str) {
     .join(" ");
 }
 
-export function showToast(message) {
-  const container = document.getElementById("toast-container");
+export function setFooterCopyright(data) {
+  const copyrightContainer = document.getElementById('copyright');
+  const year = new Date(data.date).getFullYear();
+  const copyright =
+    data.copyright || "Public Domain";
 
-  const toast = document.createElement("div");
-  toast.className = "toast";
-  toast.textContent = message;
-
-  container.appendChild(toast);
-
-  // Remove after animation ends (e.g., 3s total)
-  setTimeout(() => {
-    toast.remove();
-  }, 2000);
+  copyrightContainer.innerHTML = `&copy; ${year} ${copyright}`;
 }
