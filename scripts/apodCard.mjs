@@ -24,9 +24,12 @@ export function createApodCard(apod, options = {}) {
             </div>
         `;
     } else {
-        mediaHTML = `<p>Unsupported media type: ${apod.media_type}</p>`;
+        mediaHTML = `
+        <p>Unsupported media type: ${apod.media_type}</p>
+        <img src="nasa-logo.png" alt="NASA Logo" loading="lazy">
+        `;
     }
-    
+
     front.innerHTML = `
         <a href="result.html?date=${apod.date}">
             ${mediaHTML}
