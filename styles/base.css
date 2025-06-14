@@ -211,16 +211,43 @@ button {
 
 .topic-card:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);}
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+}
 
 /* Footer content */
 
 footer {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem;
-    background-color: var(--nebula-blue);
+    background-color: var(--space-black);
     font-size: 0.9rem;
 }
+
+footer img {
+    height: 82px;
+    width: 100px;
+}
+
+footer div {
+    display: block;
+}
+
+footer h4 {
+    color: var(--star-yellow);
+    font-family: var(--font-heading);
+}
+
+footer p {
+    color: var(--planet-white);
+}
+
+footer a {
+    color: var(--star-yellow);
+    text-decoration: underline;
+}
+
 
 /* Calendar Styling */
 .calendar-search {
