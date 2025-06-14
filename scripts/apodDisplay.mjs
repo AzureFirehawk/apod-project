@@ -44,9 +44,28 @@ export async function showApodInfo(date) {
         // Populate APOD section
         document.getElementById("apod-title").textContent = apodData.title;
         document.getElementById("apod-explanation").textContent = apodData.explanation;
-        document.getElementById("apod-image").src = apodData.url;
-        document.getElementById("apod-image").alt = apodData.title;
 
+        const mediaContainer = document.getElementById("apod-media");
+        mediaContainer.innerHTML = ""; // Clear previous content
+
+        if (apodData.media_type === "image") {
+            const img = document.createElement("img");
+            img.src = apodData.url;
+            img.alt = apodData.title;
+            img.loading = "lazy";
+            mediaContainer.appendChild(img);
+        } else if (apodData.media_type === "video") {
+            const iframe = document.createElement("iframe");
+            iframe.src = apodData.url;
+            iframe.allowFullscreen = true;
+            iframe.frameBorder = "0";
+            iframe.loading = "lazy";
+            iframe.width = "100%";
+            iframe.height = "500"; // Adjust height as needed
+            mediaContainer.appendChild(iframe);
+        } else {
+            mediaContainer.innerHTML = `<p>Unsupported media type: ${apodData.media_type}</p>`;
+        }
         // Update favorite button
         updateFavoriteButton(apodData, firstTitleKeywords);
 

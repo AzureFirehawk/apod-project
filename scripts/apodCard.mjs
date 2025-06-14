@@ -12,9 +12,24 @@ export function createApodCard(apod, options = {}) {
 
     const front = document.createElement("div");
     front.classList.add("card-front");
+
+    // Media Content
+    let mediaHTML = "";
+    if (apod.media_type === "image") {
+        mediaHTML = `<img src="${apod.url}" alt="${apod.title}" loading="lazy">`;
+    } else if (apod.media_type === "video") {
+        mediaHTML = `
+            <div class="video-wrapper">
+                <iframe src="${apod.url}" frameborder="0" allowfullscreen loading="lazy"></iframe>
+            </div>
+        `;
+    } else {
+        mediaHTML = `<p>Unsupported media type: ${apod.media_type}</p>`;
+    }
+    
     front.innerHTML = `
         <a href="result.html?date=${apod.date}">
-            <img src="${apod.url}" alt="${apod.title}" loading="lazy">
+            ${mediaHTML}
         </a>
         <a href="result.html?date=${apod.date}">
             <h3>${apod.title}</h3>
