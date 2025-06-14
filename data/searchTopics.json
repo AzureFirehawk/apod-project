@@ -1,162 +1,167 @@
 [
     {
-        "label": "Galaxies",
-        "description": "Vast star systems like the Milky Way and Andromeda featured in stunning cosmic views.",
+        "label": "Deep Space Objects",
+        "description": "Galaxies, nebulae, stars, and other cosmic structures featured in stunning cosmic views.",
         "keywords": [
             "galaxy",
+            "galaxies",
             "milky way",
             "andromeda",
             "spiral galaxy",
-            "elliptical galaxy"
-        ]
-    },
-    {
-        "label": "Nebulae",
-        "description": "Colorful clouds of gas and dust where stars are born and die.",
-        "keywords": [
+            "elliptical galaxy",
             "nebula",
             "nebulae",
             "planetary nebula",
-            "orion nebula"
-        ]
-    },
-    {
-        "label": "Stars",
-        "description": "From distant suns to supernova explosions and variable stars.",
-        "keywords": [
+            "orion nebula",
+            "emission nebula",
+            "reflection nebula",
+            "dark nebula",
             "star",
+            "stars",
+            "stellar",
             "supernova",
             "nova",
             "pulsar",
             "quasar",
-            "variable star"
+            "variable star",
+            "globular cluster",
+            "open cluster"
         ]
     },
     {
-        "label": "Planets",
-        "description": "Discover Earth's neighbors, from rocky Mercury to distant Neptune.",
+        "label": "Planets & Moons",
+        "description": "Planets and their diverse moons orbiting across the solar system.",
         "keywords": [
+            "planet",
+            "planets",
             "mercury",
             "venus",
+            "earth",
             "mars",
             "jupiter",
             "saturn",
             "uranus",
             "neptune",
-            "pluto"
-        ]
-    },
-    {
-        "label": "Moons",
-        "description": "Explore the diverse moons orbiting planets across the solar system.",
-        "keywords": [
+            "pluto",
             "moon",
+            "moons",
             "lunar",
+            "satellite",
             "io",
             "europa",
             "titan",
             "callisto",
             "charon",
-            "ganymede"
+            "ganymede",
+            "triton",
+            "phobos",
+            "deimos",
+            "surface of mars",
+            "surface of jupiter"
         ]
     },
     {
-        "label": "Asteroids & Comets",
-        "description": "Small bodies like comets, asteroids, and meteoroids that fill our solar system.",
+        "label": "Small Solar System Bodies",
+        "description": "Asteroids, comets, meteors, and other small bodies in our solar system.",
         "keywords": [
             "asteroid",
+            "asteroids",
             "comet",
+            "comets",
+            "comet tail",
             "meteor",
+            "meteors",
             "meteorite",
+            "meteorites",
             "meteoroid",
-            "comet tail"
+            "meteoroids",
+            "bolide",
+            "dust trail",
+            "impact crater"
         ]
     },
     {
-        "label": "Telescopes & Missions",
-        "description": "Space-based and Earth-based instruments that capture the universe in detail.",
+        "label": "Spacecraft & Missions",
+        "description": "Space missions, rockets, spacecraft, and exploration vehicles.",
         "keywords": [
-            "telescope",
-            "observatory",
-            "hubble",
-            "jwst",
-            "spitzer",
-            "chandra",
-            "wise"
-        ]
-    },
-    {
-        "label": "Astronomy Concepts",
-        "description": "Fundamental physics and cosmic phenomena that shape the universe.",
-        "keywords": [
-            "gravity",
-            "magnetic field",
-            "redshift",
-            "blueshift",
-            "light year",
-            "radiation"
-        ]
-    },
-    {
-        "label": "NASA Missions",
-        "description": "Historic and modern missions like Apollo, Artemis, and Perseverance.",
-        "keywords": [
+            "rocket",
+            "rockets",
+            "satellite",
+            "satellites",
+            "capsule",
+            "spacecraft",
+            "landers",
+            "lander",
+            "probe",
+            "probes",
+            "rover",
+            "rovers",
             "apollo",
             "artemis",
             "perseverance",
             "curiosity",
             "voyager",
-            "osiris-rex"
-        ]
-    },
-    {
-        "label": "Rockets & Spacecraft",
-        "description": "The vehicles that carry us and our instruments into orbit and beyond.",
-        "keywords": [
-            "rocket",
-            "satellite",
-            "capsule",
-            "spacecraft",
-            "lander",
-            "probe"
-        ]
-    },
-    {
-        "label": "International Space Station",
-        "description": "Humanity's orbital home for science, observation, and international cooperation.",
-        "keywords": [
+            "new horizons",
+            "osiris-rex",
+            "jwst",
+            "hubble",
+            "spitzer",
+            "wise",
+            "chandra",
             "iss",
-            "international space station"
+            "international space station",
+            "space station",
+            "launch",
+            "payload",
+            "deployment",
+            "mission",
+            "missions"
         ]
     },
     {
-        "label": "Auroras & Airglow",
-        "description": "Beautiful atmospheric light displays near Earth's poles.",
+        "label": "Astronomy Concepts & Phenomena",
+        "description": "Fundamental cosmic concepts, celestial events, and atmospheric phenomena.",
         "keywords": [
+            "gravity",
+            "gravitational",
+            "magnetic field",
+            "magnetosphere",
+            "redshift",
+            "blueshift",
+            "light year",
+            "parsec",
+            "radiation",
+            "cosmic rays",
+            "infrared",
+            "ultraviolet",
+            "x-ray",
+            "gamma ray",
+            "spectrum",
             "aurora",
+            "auroras",
             "airglow",
-            "aurora borealis"
-        ]
-    },
-    {
-        "label": "Eclipses & Transits",
-        "description": "When the Sun, Moon, or planets align to create visual wonders.",
-        "keywords": [
+            "aurora borealis",
+            "aurora australis",
             "eclipse",
-            "lunar eclipse",
             "solar eclipse",
-            "transit"
-        ]
-    },
-    {
-        "label": "Constellations & Skyscapes",
-        "description": "Recognizable star patterns and breathtaking nightscapes.",
-        "keywords": [
+            "lunar eclipse",
+            "eclipses",
+            "transit",
+            "transits",
+            "conjunction",
+            "opposition",
+            "alignment",
             "constellation",
+            "constellations",
             "star map",
             "skyscape",
+            "panorama",
             "horizon",
-            "zenith"
+            "zenith",
+            "celestial sphere",
+            "equator",
+            "solstice",
+            "equinox"
         ]
     }
 ]
