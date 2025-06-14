@@ -91,7 +91,7 @@ a {
     margin-bottom: 0
 }
 
-.card-front img {
+.card-front img, .card-front iframe {
     width: 100%;
     height: 200px;
     object-fit: cover;
