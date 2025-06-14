@@ -56,8 +56,19 @@
             "triton",
             "phobos",
             "deimos",
+            "enceladus",
+            "rhea",
+            "tethys",
+            "dione",
+            "mimas",
+            "iapetus",
+            "phoebe",
             "surface of mars",
-            "surface of jupiter"
+            "surface of jupiter",
+            "eris",
+            "ceres",
+            "haumea",
+            "makemake"
         ]
     },
     {
