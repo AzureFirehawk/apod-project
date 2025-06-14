@@ -65,13 +65,15 @@ export function normalizeText(text) {
 // Match phrases inside normalized text
 function extractPhrasesFromText(text, phraseList) {
     const normalized = normalizeText(text);
-    return phraseList.filter(phrase => normalized.includes(phrase));
+    return phraseList
+        .filter(phrase => normalized.includes(phrase))
+        .map(phrase => ({ keyword: phrase, score: 2 })); // Phrase score
 }
 
 // Match single astronomy terms
-function extractRelevantKeywords(text) {
+function extractRelevantKeywords(text, source='body') {
     if (!text) return [];
-    
+
     const stopwords = new Set([
         'which', 'their', 'there', 'about', 'would', 'these', 'could',
         'other', 'some', 'also', 'after', 'before', 'where', 'when',
@@ -86,34 +88,56 @@ function extractRelevantKeywords(text) {
         .split(/\W+/)
         .filter(word => word.length > 4 && !stopwords.has(word));
 
-    return [...new Set(words.filter(word => astronomyTerms.has(word)))];
+    const score = source === 'title' ? 3 : 1.5;
+
+    return [...new Set(words)]
+        .filter(word => astronomyTerms.has(word))
+        .map(word => ({ keyword: word, score }));
 }
 
 //Fetch APOD + match keywords and phrases
 export async function fetchApodWithKeywords(date) {
     const apodData = await fetchApod(date);
-    
     await loadAstronomyKeywords();
 
-    const titleKeywords = extractRelevantKeywords(apodData.title);
+    const titleKeywords = extractRelevantKeywords(apodData.title, 'title');
     const phraseKeywords = extractPhrasesFromText(apodData.explanation, astronomyPhrases);
-    const termKeywords = extractRelevantKeywords(apodData.explanation);
+    const termKeywords = extractRelevantKeywords(apodData.explanation, 'body');
 
     const imageLibraryItems = await searchImageLibraryByTitle(apodData.title);
-    const imageKeywords = (imageLibraryItems[0]?.data[0]?.keywords || []).map(k => k.toLowerCase());
-
-    const combinedKeywords = [...new Set([
+    const imageKeywordsRaw = (imageLibraryItems[0]?.data[0]?.keywords || []).map(k => k.toLowerCase());
+    const imageKeywordScores = imageKeywordsRaw
+        .filter(k => astronomyTerms.has(k) || astronomyPhrases.includes(k))
+        .map(k => ({ keyword: k, score: 2 }));
+    
+    const allKeywords = [
         ...titleKeywords,
         ...phraseKeywords,
         ...termKeywords,
-        ...imageKeywords
-    ])];
+        ...imageKeywordScores
+    ];
 
-    console.log('Combined keywords:', combinedKeywords);
+    // Merge by keyword and sum scores
+    const keywordMap = new Map();
+    for (const { keyword, score } of allKeywords) {
+        const normalized = normalizeText(keyword);
+        if (keywordMap.has(keyword)) {
+            keywordMap.set(keyword, keywordMap.get(keyword) + score);
+        } else {
+            keywordMap.set(keyword, score);
+        }
+    }
+
+    // Sorted keyword-score pairs
+    const scoredKeywords = [...keywordMap.entries()]
+        .map(([keyword, score]) => ({ keyword, score }))
+        .sort((a, b) => b.score - a.score);
+
+    console.log(`Keywords for ${apodData.title}:`, scoredKeywords);
     return {
         apodData,
-        firstTitleKeywords : titleKeywords[0] || null,
-        keywords: combinedKeywords
+        firstTitleKeywords: titleKeywords.length ? titleKeywords[0].keyword : null,
+        keywords: scoredKeywords
     };
 
 }

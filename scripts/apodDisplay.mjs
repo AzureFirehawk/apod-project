@@ -14,7 +14,7 @@ export async function showRelatedTopics(keywords) {
 
     for (const term of keywords) {
         if (count >= 3 || used.has(term)) break;
-        const wikiInfo = await fetchWikipediaInfo(term);
+        const wikiInfo = await fetchWikipediaInfo(term.keyword);
         if (wikiInfo) {       
             const card = document.createElement("div");
             card.classList.add("topic-card");
