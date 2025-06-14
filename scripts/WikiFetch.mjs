@@ -17,7 +17,7 @@ export async function fetchWikipediaInfo(term, depth = 0) {
 
     //setup default overrides
     await loadOverrides();
-    const overrideTitle = disambiguationOverrides[term.toLowerCase()];
+    const overrideTitle = disambiguationOverrides[term.toLowerCase()];;
     if (overrideTitle) {
         console.log(`Using override: ${term} → ${overrideTitle}`);
         return await fetchWikipediaInfo(overrideTitle, depth + 1);
@@ -77,11 +77,11 @@ async function tryResolveDisambiguation(term, depth) {
         const prioritized = pages.find(page =>
             priorityTerms.some(pt => page.title.toLowerCase().includes(pt))
         );
-        if (prioritized) return await fetchWikipediaInfo(prioritized.title, depth);
+        if (prioritized) return await fetchWikipediaInfo(prioritized.title, depth + 1);
 
         // Fallback to first non-disambiguation
         const fallback = pages.find(page => !page.title.toLowerCase().includes("disambiguation"));
-        if (fallback) return await fetchWikipediaInfo(fallback.title, depth);
+        if (fallback) return await fetchWikipediaInfo(fallback.title, depth + 1);
     } catch (err) {
         console.warn(`Disambiguation fallback failed for "${term}":`, err.message);
     }
