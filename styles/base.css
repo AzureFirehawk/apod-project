@@ -153,6 +153,26 @@ button {
     color: var(--space-black);
 }
 
+.view-more-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--star-yellow);
+    color: var(--space-black);
+    font-family: var(--font-heading);
+    font-weight: bold;
+    border: 1px solid var(--star-yellow);    
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s ease;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.view-more-btn:hover {
+    background-color: var(--space-black);
+    border: 2px solid var(--star-yellow);
+    color: var(--star-yellow);
+    transform: scale(1.03);
+}
+
 /* Related Topics */
 
 .related-topics {
