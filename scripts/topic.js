@@ -43,12 +43,13 @@ async function loadApodBatch() {
         // keep top scoring results
         const topResults = results.slice(0, 12);        
 
-        topResults.forEach(({ apod, score }) => {
+        topResults.forEach(({ apod }) => {
             const card = createApodCard(apod, {
                 showExplanation: true,
                 isFlippable: true,
                 showRemoveButton: false
             });
+            topicDisplay.appendChild(card);
         });
 
         // Move window back 30 days for next load
