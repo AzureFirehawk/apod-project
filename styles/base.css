@@ -65,10 +65,17 @@ nav a {
     padding: 2rem 1rem;
 }
 
-#apod-image {
+#apod-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0.75rem;
+}
+
+#apod-media img, #apod-media iframe {
     width: 100%;
-    height: auto;
-    border-radius: 6px;
+    border-radius: 0.75rem;
 }
 
 .apod-info {
