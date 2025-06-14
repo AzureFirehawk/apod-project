@@ -1,5 +1,3 @@
-// searchByTopic.mjs
-
 import { normalizeText } from "./apodKeyword.mjs";
 
 const NASA_API_KEY = "W83Z1iSs1HJ7Al5lifeGgTaON1wZVCHiOJ49GyU6";
@@ -12,12 +10,32 @@ export async function loadTopicKeywords(topicLabel) {
     return topic ? topic.keywords.map(k => k.toLowerCase()) : [];
 }
 
-function apodMatchesKeywords(apod, keywords) {
+function keywordInText(text, keyword) {
+    const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // escape regex chars
+    const regex = new RegExp(`\\b${escapedKeyword}\\b`, 'i'); // match whole words/phrases
+    return regex.test(text);
+}
+
+function apodMatchScore(apod, keywords) {
     const title = normalizeText(apod.title || "");
     const explanation = normalizeText(apod.explanation || "");
-    return keywords.some(keyword =>
-        title.includes(keyword) || explanation.includes(keyword)
-    );
+
+    // Prioritize longer phrases first
+    keywords = keywords.slice().sort((a, b) => b.length - a.length);
+
+    let score = 0;
+    const titleWeight = 10;
+    const explanationWeight = 5;
+
+    keywords.forEach(keyword => {
+        if (keywordInText(title, keyword)) {
+            score += titleWeight;
+        } else if (keywordInText(explanation, keyword)) {
+            score += explanationWeight;
+        }
+    });
+
+    return score;
 }
 
 export async function fetchApodsInRange(startDate, endDate) {
@@ -35,6 +53,10 @@ export async function searchApodsByTopicInRange(topicLabel, startDate, endDate) 
     const keywords = await loadTopicKeywords(topicLabel);
     const apods = await fetchApodsInRange(startDate, endDate);
 
-    const matching = apods.filter(apod => apodMatchesKeywords(apod, keywords));
-    return matching;
+    const matched = apods
+        .map(apod => ({ apod, score: apodMatchScore(apod, keywords) }))
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score) // descending relevance
+
+    return matched;
 }
