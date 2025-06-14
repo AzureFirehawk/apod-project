@@ -41,8 +41,8 @@ async function loadApodBatch() {
         }
 
         // keep top scoring results
-        const topResults = results.slice(0, 12);        
-
+        const topResults = results.slice(0, 12);     
+      
         topResults.forEach(({ apod }) => {
             const card = createApodCard(apod, {
                 showExplanation: true,
@@ -78,7 +78,7 @@ async function initTopicSearch() {
 
     topicTitle.textContent = `Results for: ${topicLabel}`;
     await loadApodBatch(); // load initial batch
-
+    
     viewMoreBtn.addEventListener("click", async () => {
         viewMoreBtn.disabled = true;
         viewMoreBtn.textContent = "Loading...";
