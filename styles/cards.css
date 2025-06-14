@@ -61,7 +61,7 @@
 }
 
 .apod-card.flippable.flipped .card-back {
-    transform: rotateY(0deg);
+    transform: rotateY(360deg);
     z-index: 2;
 }
 
