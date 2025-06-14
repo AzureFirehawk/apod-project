@@ -22,29 +22,6 @@ export function setLocalStorage(key, data) {
   }
 }
 
-// get URL parameter
-export function getParam(param) {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  return urlParams.get(param);
-}
-
-// render a list with template
-export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
-  if (!parentElement) {
-    console.error('Parent element not found');
-    return;
-  }
-  
-  const htmlStrings = list.map(template);
-  
-  if (clear) {
-    parentElement.innerHTML = "";
-  }
-  
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
-}
-
 export function renderWithTemplate(template, parentElement, data, callback) {
   if (!parentElement) {
     console.error('Parent element not found');
