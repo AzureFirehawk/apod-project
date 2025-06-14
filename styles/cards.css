@@ -10,11 +10,11 @@
     --font-body: 'Open Sans', sans-serif;
 }
 
-#cards-container {
+#cards-container, #topic-display {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .apod-card {
