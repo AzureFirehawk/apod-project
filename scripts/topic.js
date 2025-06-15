@@ -28,7 +28,7 @@ function getTopicFromURL() {
 async function loadApodBatch() {
     const endDateStr = currentEndDate.toISOString().split("T")[0];
     const startDate = new Date(currentEndDate);
-    startDate.setDate(startDate.getDate() - 90);
+    startDate.setDate(startDate.getDate() - 60);
     const startDateStr = startDate.toISOString().split("T")[0];
 
     try {
