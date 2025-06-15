@@ -120,7 +120,6 @@ export async function fetchApodWithKeywords(date) {
     // Merge by keyword and sum scores
     const keywordMap = new Map();
     for (const { keyword, score } of allKeywords) {
-        const normalized = normalizeText(keyword);
         if (keywordMap.has(keyword)) {
             keywordMap.set(keyword, keywordMap.get(keyword) + score);
         } else {
@@ -136,7 +135,6 @@ export async function fetchApodWithKeywords(date) {
     console.log(`Keywords for ${apodData.title}:`, scoredKeywords);
     return {
         apodData,
-        firstTitleKeywords: titleKeywords.length ? titleKeywords[0].keyword : null,
         keywords: scoredKeywords
     };
 
