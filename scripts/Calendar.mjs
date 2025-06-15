@@ -1,4 +1,4 @@
-import { getFavorites, isFavorite } from "./FavoritesStorage.mjs";
+import { isFavorite } from "./FavoritesStorage.mjs";
 
 
 const calendar = document.getElementById("calendar");
