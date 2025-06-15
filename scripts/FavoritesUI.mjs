@@ -3,10 +3,10 @@ import { renderCalendar } from "./Calendar.mjs";
 
 const today = new Date();
 
-async function handleAddFavorite(apodData, titleKeyword) {
-    const result = await addFavorite(apodData, titleKeyword);
+function handleAddFavorite(apodData) {
+    const result = addFavorite(apodData);
     if (result.success) {
-        updateFavoriteButton(apodData, titleKeyword);
+        updateFavoriteButton(apodData);
         renderCalendar(today.getMonth(), today.getFullYear());
 
     } else {
@@ -24,7 +24,7 @@ function handleRemoveFavorite(apodData) {
     }
 }
 
-export function updateFavoriteButton(apodData, titleKeyword) {
+export function updateFavoriteButton(apodData) {
     const button = document.getElementById("save-favorite");
     if (!button) return;
 
@@ -35,6 +35,6 @@ export function updateFavoriteButton(apodData, titleKeyword) {
     } else {
         button.textContent = "☆ Add to Favorites";
         button.classList.remove("saved");
-        button.onclick = () => handleAddFavorite(apodData, titleKeyword);
+        button.onclick = () => handleAddFavorite(apodData);
     }
 }
